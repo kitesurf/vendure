@@ -1,0 +1,20 @@
+name = "vendure-ecommerce" # Name deines Workers
+main = "index.js" # Die Haupt-JavaScript-Datei für deinen Worker
+
+# Cloudflare Pages Konfiguration
+[site]
+bucket = "./dist" # Das Verzeichnis, das nach dem Build bereitgestellt werden soll
+entry-point = "workers-site" # Der Name des Workers, der deine Site bedient
+
+# Umgebungsvariablen (hier musst du deine eigenen Werte eintragen)
+[vars]
+DATABASE_URL = "" 
+# ... weitere Vendure-spezifische Umgebungsvariablen ...
+
+# Worker-spezifische Einstellungen
+[build]
+command = "npm run build" # Der Befehl zum Erstellen deiner Vendure-Anwendung
+
+# Routen für deine Anwendung
+[[routes]]
+pattern = "/*" # Alle Anfragen werden an deinen Worker weitergeleitet
